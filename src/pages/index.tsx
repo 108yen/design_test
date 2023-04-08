@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import MuiStyled from "./mui-styled";
+import TypingAnimation from "./typing-animatino";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
         border="solid"
         sx={{ transitionDuration: "1s" }}
       >
-        <MuiStyled />
+        {/* <MuiStyled /> */}
+        <TypingAnimation />
       </Box>
     </>
   )
