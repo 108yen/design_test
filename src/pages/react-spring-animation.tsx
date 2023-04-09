@@ -1,6 +1,6 @@
 import { useSpring, animated } from '@react-spring/web'
-import { useLayoutEffect, useState } from 'react';
-import { useChain, useSpringRef, useTransition } from 'react-spring'
+import { Children, ReactNode, useLayoutEffect, useState } from 'react';
+import { easings, useChain, useSpringRef, useTransition } from 'react-spring'
 
 const data = ['鉄血', '熱血', '冷血']
 
@@ -96,32 +96,53 @@ function UseChainComponent() {
     )
 }
 
-function UseSpringComponent() {
+function UseSpringComponent({
+    children
+}: {
+    children: ReactNode
+}) {
     const props = useSpring({
         config: {
-            duration: 100,
+            duration: 3000,
         },
-        loop: true,
         delay: 3000,
         from: {
-            opacity: 0,
-            transform: "translateY(-100%)",
+            width: "100%",
+            height: "100%",
+            background: "white",
         },
         to: {
-            opacity: 1,
-            transform: "translateY(0)",
+            width: "100%",
+            height: "70%",
+            background: "white",
         },
     })
 
-    return <animated.div style={props}>Hello World</animated.div>
+    return (
+        <div style={{
+            display: "flex",
+            width: "100%",
+            height: "100%",
+            background: "black",
+            alignItems: "center",
+        }}>
+            <animated.div style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                ...props,
+            }}>{children}</animated.div>
+        </div>
+    );
 }
 
 export default function SpringAnimation() {
     return (
         <>
-            {/* <UseSpringComponent /> */}
-            {/* <UseChainComponent /> */}
-            <UseTransitionComponent />
+            <UseSpringComponent>
+                {/* <UseChainComponent /> */}
+                <UseTransitionComponent />
+            </UseSpringComponent>
         </>
     );
 }
