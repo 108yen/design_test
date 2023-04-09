@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import MuiStyled from "./mui-styled";
 import TypingAnimation from "./typing-animatino";
+import SpringAnimation from "./react-spring-animation";
 
 export default function Home() {
   return (
@@ -15,7 +16,8 @@ export default function Home() {
         sx={{ transitionDuration: "1s" }}
       >
         {/* <MuiStyled /> */}
-        <TypingAnimation />
+        {/* <TypingAnimation /> */}
+        <SpringAnimation/>
       </Box>
     </>
   )
